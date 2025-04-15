@@ -1,0 +1,12 @@
+__pycache__
+*.pyc
+.venv/
+runtime/
+.env
+.DS_Store
+*.db
+/.idea
+/agentic
+user_profile.json
+auth_data.json
+auth_data_hotel.json

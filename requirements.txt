@@ -1,0 +1,7 @@
+python-dotenv
+pytest
+git+https://github.com/supercog-ai/agentic.git
+six==1.17.0
+requests==2.32.3
+PyJWT==2.8.0
+googlemaps==4.10.0
