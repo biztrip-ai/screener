@@ -1,26 +1,38 @@
-# fly.toml app configuration file generated for biztrip on 2025-03-31T07:58:52-04:00
+# fly.toml app configuration file generated for screener-morning-darkness-9734 on 2025-04-15T18:25:53-07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'biztrip'
+app = 'screener-morning-darkness-9734'
 primary_region = 'sjc'
 
-[http_service]
-  internal_port = 8086
-  force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
+[build]
+
+[[mounts]]
+  source = 'screener_storage'
+  destination = '/app/runtime'
   processes = ['app']
 
-[[vm]]
-  memory = '1024mb'
-  cpu_kind = 'shared'
-  cpus = 1
+[[services]]
+  internal_port = 3000
+  protocol = "tcp"
+  [[services.ports]]
+      handlers = ["http"]
+      port = 3000
 
-[mounts]
-  source="agents_storage"
-  destination="/app/runtime"
-  processes = ["app"]
-  
+[[services]]
+  internal_port = 8086
+  protocol = "tcp"
+  [[services.ports]]
+      handlers = ["http"]
+      port = 8086
+
+   [services.ports.http_options.response.headers]
+      # Headers that help with SSE connections
+      Cache-Control = "no-cache"
+      Connection = "keep-alive"
+      X-Accel-Buffering = "no"
+
+[[vm]]
+  size = "performance-1x"
+  cpus = 1

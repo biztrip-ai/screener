@@ -1,0 +1,17 @@
+# flyctl launch added from .gitignore
+**/__pycache__
+**/*.pyc
+**/.venv
+**/runtime
+**/.env
+**/.DS_Store
+**/*.db
+.idea
+agentic
+**/user_profile.json
+**/auth_data.json
+**/auth_data_hotel.json
+
+# flyctl launch added from .venv/.gitignore
+.venv/**/*
+fly.toml

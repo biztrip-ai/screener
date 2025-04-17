@@ -1,1 +1,1 @@
-agentic dashboard start --agent-path screener/recruiting_agent.py 
+agentic dashboard start --dev --agent-path screener/recruiting_agent.py 

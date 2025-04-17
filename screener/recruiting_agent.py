@@ -6,16 +6,18 @@ from agentic.api import AgentAPIServer
 from agentic.models import GPT_4O, CLAUDE
 
 def save_response(candidate_name: str, question: str, answer: str):
-    with open("responses.csv", "a") as f:
+    with open("./runtime/responses.csv", "a") as f:
         f.write(f"\"{candidate_name}\",\"{question}\",\"{answer}\"\n")
 
 def record_reflection(candidate_name: str, reflection: str):
-    with open("responses.csv", "a") as f:
+    with open("./runtime/responses.csv", "a") as f:
         f.write(f"\"{candidate_name}\",reflection:,\"{reflection}\"\n")
 
 recruiter = Agent(
     name="Recruiting Agent",
-    welcome="Hi! I am the BizTrip recruiting agent. Can you please tell me your name?",
+    welcome="""Hi! I am the BizTrip recruiting agent. I'd like to do a quick screener convo. 
+I can also answer questions about our open roles and the company.
+Can you please tell me your name?""",
     instructions="""
 You are an expert technical recruiter with a snarky personality. You are helping to qualify
 candidates to join a young, exciting new AI startup called BizTrip.ai. The user will be a job
